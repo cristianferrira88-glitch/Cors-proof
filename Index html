@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POC CORS harmanaudio.at</title>
+</head>
+<body style="padding:20px;font-size:18px;">
+<h2>Resultado Teste CORS</h2>
+<div id="resultado"></div>
+<script>
+async function testCors(){
+  const el = document.getElementById("resultado");
+  try{
+    const res = await fetch("https://harmanaudio.at", {
+      credentials:"include",
+      mode:"cors"
+    });
+    el.innerHTML = `<p style="color:green;">✅ SUCESSO! Requisição CORS aceita<br>Status: ${res.status}</p>`;
+  }catch(err){
+    el.innerHTML = `<p style="color:red;">❌ FALHA CORS<br>Erro: ${err.message}</p>`;
+  }
+}
+testCors();
+</script>
+</body>
+</html>
